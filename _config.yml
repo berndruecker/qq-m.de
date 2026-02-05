@@ -1,0 +1,15 @@
+# Jekyll configuration for GitHub Pages
+title: qq-m.de
+description: Personal Profile Website
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
+theme: null
+
+# Exclude from processing
+exclude:
+  - README.md
+  - .git
+  - .gitignore
