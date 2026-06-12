@@ -24,7 +24,137 @@
 	<link rel="stylesheet" href="assets/css/slick.css">
 	<link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    
+    <style>
+        /* ── Warme Farbpalette (ersetzt Lila) ── */
+        :root {
+            --qq-primary:    #C05C2E;   /* Terrakotta – Aktionsfarbe */
+            --qq-primary-dk: #9E4822;   /* dunkler für Hover */
+            --qq-accent:     #7B5EA7;   /* gedämpftes Lila – Struktur */
+            --qq-bg-hero:    #FDF6F0;   /* warmes Creme */
+            --qq-bg-vision:  #F0ECF7;   /* zartes Lila-Grau */
+        }
+
+        /* Header & Nav */
+        .main-header { background: #fff !important; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+        .main-menu nav ul li a,
+        .main-menu nav ul li a:visited { color: #333 !important; }
+        .main-menu nav ul li a:hover,
+        .main-menu nav ul li.active a { color: var(--qq-primary) !important; }
+
+        /* Buttons */
+        .btn.header-btn,
+        a.btn.header-btn {
+            background: var(--qq-primary) !important;
+            border-color: var(--qq-primary) !important;
+            color: #fff !important;
+        }
+        .btn.header-btn:hover { background: var(--qq-primary-dk) !important; border-color: var(--qq-primary-dk) !important; }
+
+        /* Hero */
+        .slider-area { background: var(--qq-bg-hero) !important; }
+        .slider-height { min-height: 520px !important; }
+        @media only screen and (min-width: 992px) and (max-width: 1199px) {
+            .slider-height { min-height: 460px !important; }
+        }
+        .slider-area .single-slider { padding-top: 100px; padding-bottom: 40px; }
+        .slider-area .hero__caption h1 { color: #2a1a0e !important; }
+        .slider-area .hero__caption p   { color: #5a3a24 !important; }
+        .slider-area .hero__caption hr  { border-color: var(--qq-primary) !important; opacity: 0.4; }
+
+        /* Abschnitt-Wechsel – abwechselnde Hintergründe */
+        section#vision { background: var(--qq-bg-vision) !important; }
+        section#contact { background: var(--qq-bg-hero) !important; }
+
+        /* Lila Akzent: Überschriften und Trennlinie */
+        .section-tittle h2 { color: var(--qq-accent) !important; }
+        .vision-section .section-tittle h2 { color: var(--qq-accent) !important; }
+
+        /* Footer: lila Hintergrund als struktureller Abschluss */
+        .footer-bottom-area { background: #2e1f4a !important; }
+        .footer-copy-right p,
+        .footer-copy-right a,
+        .impressum-title,
+        .impressum-line,
+        .impressum-footer { color: rgba(255,255,255,0.75) !important; }
+        .impressum-email-link:hover { color: #fff !important; }
+        .footer-border { border-top: 1px solid rgba(123,94,167,0.4) !important; }
+
+        /* Links */
+        .contact-email-link,
+        .impressum-email-link { color: var(--qq-primary) !important; }
+        .contact-email-link:hover,
+        .impressum-email-link:hover { color: var(--qq-primary-dk) !important; }
+
+        /* Preloader QQ-Text */
+        .preloader-qq { color: var(--qq-primary) !important; }
+
+        /* Sektionen */
+        .qq-section {
+            padding: 52px 0;
+        }
+        .qq-section--vision  { background: var(--qq-bg-vision); }
+        .qq-section--contact { background: var(--qq-bg-hero); }
+        .qq-container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        @media (max-width: 767px) {
+            .qq-container { padding: 0 20px; }
+            .qq-section { padding: 36px 0; }
+        }
+        .qq-section h2 {
+            color: var(--qq-accent);
+            font-size: 2.6rem;
+            font-weight: 600;
+            margin-bottom: 1.1rem;
+        }
+        .qq-section p {
+            font-size: 16px;
+            line-height: 1.75;
+            color: #3a2a1e;
+            margin-bottom: 0.9rem;
+        }
+        .qq-section p:last-child { margin-bottom: 0; }
+
+        /* Foto-Banner */
+        .quote-banner {
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1600&q=80');
+            background-size: cover;
+            background-position: center 55%;
+            padding: 90px 0;
+        }
+        .quote-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(160, 70, 30, 0.58);
+        }
+        .quote-banner .quote-inner {
+            position: relative;
+            max-width: 740px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 30px;
+            color: #fff;
+        }
+        .quote-banner blockquote {
+            font-size: 1.45rem;
+            font-weight: 300;
+            line-height: 1.75;
+            margin: 0 0 1rem;
+            font-style: italic;
+            color: #fff;
+        }
+        .quote-banner cite {
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.8;
+            font-style: normal;
+        }
+    </style>
 </head>
 <body>
     <!-- ? Preloader Start -->
@@ -84,11 +214,9 @@
                             <!-- Hero Caption -->
                             <div class="hero__caption">
                                 <h1>QQ Miteinander</h1>
-                                <p>Gemeinnützige GmbH</p>
+                                <p>Gemeinnützige GmbH · Quellpunkt Quartier · Bad Mergentheim</p>
                                 <hr>
-                                <p>Quellpunkt Quartier</p>
-                                <p class="cd-headline letters scale">Zwei Q – ein Wir
-                                </p>
+                                <p class="cd-headline letters scale">Zwei Q – ein Wir</p>
                             </div>
                         </div>
                     </div>
@@ -97,93 +225,61 @@
         </div>
         <!--Hero Area End-->
         
-        <!--? About 1 Start-->
-        <section class="about-area section-padding40" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="about-caption mb-50">
-                        <!-- Section Tittle -->
-                        <div class="section-tittle mb-35">
-                            <h2>Die QQ Miteinander gGmbH</h2>
-                        </div>
-                        <p>Wir leben in einer Zeit tiefgreifender Veränderungen. Digitalisierung, gesellschaftliche Polarisierung, wachsende Unsicherheiten und neue technologische Entwicklungen – etwa rund um Künstliche Intelligenz – prägen unseren Alltag. Vieles wird schneller, abstrakter und anonymer. Gleichzeitig wächst bei vielen Menschen das Bedürfnis nach Orientierung, Zugehörigkeit und echten Begegnungen.</p>
-                        <p>Wir sind überzeugt: Gerade in solchen Zeiten entsteht gesellschaftlicher Zusammenhalt nicht abstrakt, sondern vor Ort – im direkten Miteinander.</p>
-                        <p><strong>QQ steht für „Quellpunkt Quartier".</strong> Denn das Quartier ist der Ort, an dem Gemeinschaft beginnt: dort, wo Menschen mit unterschiedlichen Hintergründen zusammenleben, sich begegnen und das Zusammenleben gemeinsam gestalten. Was hier entsteht, kann weiterwirken – nach außen, in die Gesellschaft hinein.</p>
-                    </div>
-                </div>
+        <section class="qq-section" id="about">
+            <div class="qq-container">
+                <h2>Die QQ Miteinander gGmbH</h2>
+                <p>Wir leben in einer Zeit tiefgreifender Veränderungen. Digitalisierung, gesellschaftliche Polarisierung, wachsende Unsicherheiten und neue technologische Entwicklungen – etwa rund um Künstliche Intelligenz – prägen unseren Alltag. Vieles wird schneller, abstrakter und anonymer. Gleichzeitig wächst bei vielen Menschen das Bedürfnis nach Orientierung, Zugehörigkeit und echten Begegnungen.</p>
+                <p>Wir sind überzeugt: Gerade in solchen Zeiten entsteht gesellschaftlicher Zusammenhalt nicht abstrakt, sondern vor Ort – im direkten Miteinander.</p>
+                <p><strong>QQ steht für „Quellpunkt Quartier".</strong> Denn das Quartier ist der Ort, an dem Gemeinschaft beginnt: dort, wo Menschen mit unterschiedlichen Hintergründen zusammenleben, sich begegnen und das Zusammenleben gemeinsam gestalten. Was hier entsteht, kann weiterwirken – nach außen, in die Gesellschaft hinein.</p>
             </div>
-        </div>
         </section>
-        <!-- About  End-->
-        
-        <!--? Our Vision Start-->
-        <section class="about-area section-padding40 vision-section" id="vision">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="about-caption mb-50">
-                        <div class="section-tittle mb-35">
-                            <h2>Unsere Vision</h2>
-                        </div>
-                        <p>Wir möchten dazu beitragen, dass Quartiere lebendige, offene und vielfältige Orte bleiben oder wieder werden – Orte, an denen Menschen sich begegnen, sich einbringen können, und unabhängig von Herkunft, Alter, Lebensrealität oder Perspektive Teil der Gemeinschaft sind.</p>
-                        <p>Diversität verstehen wir dabei nicht als Herausforderung, sondern als Stärke. Integration bedeutet für uns, Räume zu schaffen, in denen Unterschiedlichkeit selbstverständlich ist und Zugehörigkeit erfahrbar wird.</p>
 
-                        <p><strong>Warum Wir Das Tun?</strong></p>
-                        <p>Wir glauben, dass viele gesellschaftliche Herausforderungen dort bearbeitet werden können, wo Menschen sich kennen, einbringen und Verantwortung teilen.</p>
-                        <p>In einer Zeit, in der Unterschiede oft trennen und Unsicherheiten wachsen, braucht es Orte, die verbinden: Orte, die Mut machen, Orientierung geben und zeigen, dass Zusammenleben in Vielfalt gelingen kann.</p>
-                        <p><strong>QQ möchte dazu beitragen, solche Orte zu stärken – als Quellpunkte für Gemeinschaft, Integration und ein gutes Miteinander im Quartier.</strong></p>
+        <section class="qq-section qq-section--vision" id="vision">
+            <div class="qq-container">
+                <h2>Unsere Vision</h2>
+                <p>Wir möchten dazu beitragen, dass Quartiere lebendige, offene und vielfältige Orte bleiben oder wieder werden – Orte, an denen Menschen sich begegnen, sich einbringen können, und unabhängig von Herkunft, Alter, Lebensrealität oder Perspektive Teil der Gemeinschaft sind.</p>
+                <p>Diversität verstehen wir dabei nicht als Herausforderung, sondern als Stärke. Integration bedeutet für uns, Räume zu schaffen, in denen Unterschiedlichkeit selbstverständlich ist und Zugehörigkeit erfahrbar wird.</p>
+                <p><strong>Warum wir das tun?</strong></p>
+                <p>Wir glauben, dass viele gesellschaftliche Herausforderungen dort bearbeitet werden können, wo Menschen sich kennen, einbringen und Verantwortung teilen.</p>
+                <p>In einer Zeit, in der Unterschiede oft trennen und Unsicherheiten wachsen, braucht es Orte, die verbinden: Orte, die Mut machen, Orientierung geben und zeigen, dass Zusammenleben in Vielfalt gelingen kann.</p>
+                <p><strong>QQ möchte dazu beitragen, solche Orte zu stärken – als Quellpunkte für Gemeinschaft, Integration und ein gutes Miteinander im Quartier.</strong></p>
+            </div>
+        </section>
 
-                    </div>
-                </div>
+        <div class="quote-banner">
+            <div class="quote-inner">
+                <blockquote>„Gemeinschaft entsteht dort, wo Menschen sich begegnen – nicht abstrakt, sondern vor Ort, im gelebten Alltag."</blockquote>
+                <cite>QQ Miteinander gGmbH</cite>
             </div>
         </div>
-        </section>
-        <!-- Our Vision End-->
-        
-        <!--? Our Approach Start-->
-        <section class="about-area section-padding40" id="ansatz">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="about-caption mb-50">
-                        <div class="section-tittle mb-35">
-                            <h2>Unser Ansatz</h2>
-                        </div>
-                        <p><strong>QQ versteht sich als Impulsgeber und Ermöglicher.</strong></p>
-                        <p>Wir fördern gesellschaftlichen Zusammenhalt, Bildung, Engagement und kulturelle Teilhabe, indem wir Räume, Formate und Gelegenheiten schaffen, in denen Menschen aktiv werden können – miteinander und füreinander.</p>
-                        <p>Dabei bedienen wir uns unterschiedlicher Mittel, je nach Bedarf und Kontext: Bewegung, Bildung, Kultur, Austausch, gemeinsames Lernen oder Engagement können Wege sein, um Menschen zusammenzubringen, Barrieren abzubauen und gegenseitiges Verständnis zu fördern.</p>
-                        <p>Nicht das einzelne Angebot steht im Mittelpunkt, sondern das Ziel, das dahintersteht: Menschen zu ermutigen, Verantwortung zu übernehmen, Vertrauen aufzubauen und das eigene Umfeld gemeinsam mit anderen zu gestalten.</p>
-                        
-                        <p><strong>QQ ist eine gemeinnützige Gesellschaft. Wir arbeiten nicht gewinnorientiert.</strong></p>
-                        <p>Unsere Arbeit wird durch Spenden, Fördermittel und Kooperationen ermöglicht. Alle Mittel fließen ausschließlich in die Verwirklichung unserer gemeinnützigen Ziele.</p>
-                        <p>Transparenz, Verantwortungsbewusstsein und eine langfristige Perspektive sind für uns dabei selbstverständlich.</p>
-                    </div>
-                </div>
+
+        <section class="qq-section" id="ansatz">
+            <div class="qq-container">
+                <h2>Unser Ansatz</h2>
+                <p><strong>QQ versteht sich als Impulsgeber und Ermöglicher.</strong></p>
+                <p>Wir fördern gesellschaftlichen Zusammenhalt, Bildung, Engagement und kulturelle Teilhabe, indem wir Räume, Formate und Gelegenheiten schaffen, in denen Menschen aktiv werden können – miteinander und füreinander.</p>
+                <p>Dabei bedienen wir uns unterschiedlicher Mittel, je nach Bedarf und Kontext: Bewegung, Bildung, Kultur, Austausch, gemeinsames Lernen oder Engagement können Wege sein, um Menschen zusammenzubringen, Barrieren abzubauen und gegenseitiges Verständnis zu fördern.</p>
+                <p>Nicht das einzelne Angebot steht im Mittelpunkt, sondern das Ziel, das dahintersteht: Menschen zu ermutigen, Verantwortung zu übernehmen, Vertrauen aufzubauen und das eigene Umfeld gemeinsam mit anderen zu gestalten.</p>
+                <p><strong>QQ ist eine gemeinnützige Gesellschaft. Wir arbeiten nicht gewinnorientiert.</strong></p>
+                <p>Unsere Arbeit wird durch Spenden, Fördermittel und Kooperationen ermöglicht. Alle Mittel fließen ausschließlich in die Verwirklichung unserer gemeinnützigen Ziele.</p>
+                <p>Transparenz, Verantwortungsbewusstsein und eine langfristige Perspektive sind für uns dabei selbstverständlich.</p>
             </div>
-        </div>
         </section>
-        <!-- Our Approach End-->
-        
-        <!--? Contact Start-->
-        <section class="about-area section-padding40" id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="about-caption mb-50">
-                        <div class="section-tittle mb-35">
-                            <h2>Kontakt</h2>
-                        </div>
-                        <p>Bernd Rücker<br>
-<a href="mailto:bernd.ruecker@qq-m.de" class="contact-email-link">bernd.ruecker@qq-m.de</a><br>
-<a href="tel:+4979319619564">07931 9619564</a>
-</p>
-                    </div>
-                </div>
+
+        <section class="qq-section qq-section--contact" id="contact">
+            <div class="qq-container">
+                <h2>Kontakt</h2>
+                <p>Sie möchten mit uns zusammenarbeiten, ein Projekt entwickeln oder einfach mehr erfahren? Wir freuen uns über Ihre Nachricht.</p>
+                <p style="margin-top: 1.2rem;">
+                    <strong>Bernd Rücker</strong><br>
+                    <a href="mailto:bernd.ruecker@qq-m.de" class="contact-email-link">bernd.ruecker@qq-m.de</a><br>
+                    <a href="tel:+4979319619564">07931 9619564</a>
+                </p>
+                <p style="margin-top: 1rem;">
+                    <a href="mailto:bernd.ruecker@qq-m.de" class="btn header-btn">Nachricht schreiben <i class="ti-arrow-right"></i></a>
+                </p>
             </div>
-        </div>
         </section>
-        <!-- Contact End-->
     </main>
     <footer>
         <div class="footer-wrappr">
